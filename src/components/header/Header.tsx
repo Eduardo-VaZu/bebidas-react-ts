@@ -28,6 +28,11 @@ export default function Header() {
                                     Favoritos
                                 </NavLink>
                             </li>
+                            <li>
+                                <NavLink to="/generate" className={({ isActive }) => isActive ? "text-white" : "text-slate-300"}>
+                                    Generar AI
+                                </NavLink>
+                            </li>
                         </ul>
                     </nav>
 
