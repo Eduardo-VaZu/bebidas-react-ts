@@ -10,11 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^3.0.26",
     "@headlessui/react": "^2.2.9",
     "@heroicons/react": "^2.2.0",
     "@openrouter/ai-sdk-provider": "^2.2.2",
     "@tailwindcss/vite": "^4.1.18",
-    "ai": "^6.0.78",
+    "ai": "^6.0.79",
     "axios": "^1.13.5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

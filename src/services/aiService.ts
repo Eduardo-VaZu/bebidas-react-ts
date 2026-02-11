@@ -1,21 +1,14 @@
-export const generateRecipe = async (payload: string, model?: string) => {
-  const res = await fetch('/api/ai/generate', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ prompt: payload, model }),
-  });
+import { streamText } from "ai"
+import type { ChatMessage } from "../stores/aiSlice";
+import { openRouterClient } from "../lib/openrouter.client";
+import { env } from "../lib/env";
 
-  const reader = res.body?.getReader();
-  const decoder = new TextDecoder();
-
-  async function* stream() {
-    if (!reader) return;
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      yield decoder.decode(value);
-    }
-  }
-
-  return stream();
+export const sendChat = async (messages: ChatMessage[]) => {
+  const prompt = messages.map(m => `${m.role}: ${m.content}`).join('\n') + '\nassistant:';
+  const result = await streamText({
+    model: openRouterClient(env.openRouterModel),
+    prompt,
+    maxRetries: 0,
+  })
+  return result.textStream
 }

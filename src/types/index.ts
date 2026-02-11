@@ -1,3 +1,4 @@
+import { chatMessageSchema } from "../schema/chat-schema";
 import {
     CategoriesApiResponseSchema,
     DrinkApiResponseSchema,
@@ -14,3 +15,6 @@ export type SearchRecipeWithId = z.infer<typeof SearchRecipeWithIdSchema>;
 export type DrinksApiResponseSchema = z.infer<typeof DrinksApiResponseSchema>;
 export type DrinkApiResponseSchema = z.infer<typeof DrinkApiResponseSchema>;
 export type RecipeApiResponseSchema = z.infer<typeof RecipeApiResponseSchema>;
+export type ChatMessageInput = z.infer<typeof chatMessageSchema>;
+
+
